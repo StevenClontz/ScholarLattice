@@ -1,4 +1,4 @@
-import { PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL } from '$env/static/public'
+import { PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_CLIENT_URL } from '$env/static/public'
 import type { Database } from '../types'
 import type { LayoutLoad } from './$types'
 import { combineChunks, createBrowserClient, isBrowser, parse } from '@supabase/ssr'
@@ -6,7 +6,7 @@ import { combineChunks, createBrowserClient, isBrowser, parse } from '@supabase/
 export const load: LayoutLoad = async ({ fetch, data, depends }) => {
     depends('supabase:auth')
 
-    const supabase = createBrowserClient<Database>(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY, {
+    const supabase = createBrowserClient<Database>(PUBLIC_SUPABASE_CLIENT_URL, PUBLIC_SUPABASE_ANON_KEY, {
         global: {
             fetch,
         },
